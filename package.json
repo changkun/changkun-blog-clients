@@ -1,0 +1,55 @@
+{
+  "name": "changkun-blog-desktop",
+  "productName": "欧长坤的博客",
+  "version": "0.1.0",
+  "description": "Changkun's Blog Desktop Client",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron main.js",
+    "build": "build --mac",
+    "clean": "rm -rf dist"
+  },
+  "build": {
+    "appId": "us.changkun",
+    "category": "public.app-category.education",
+    "copyright": "Copyright © 2016 changkun.us",
+    "extend-info": "assets/macos.plist",
+    "dmg": {
+      "title": "changkun-desktop",
+      "icon": "assets/icon.icns",
+      "icon-size": 100,
+      "background": "assets/background.png",
+      "contents": [
+        {
+          "x": 415,
+          "y": 170,
+          "type": "link",
+          "path": "/Applications"
+        },
+        {
+          "x": 135,
+          "y": 170,
+          "type": "file"
+        }
+      ]
+    }
+  },
+  "directories": { "buildResources": "assets" },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/changkun/changkun-blog-desktop.git"
+  },
+  "keywords": [
+    "Changkun"
+  ],
+  "author": "Changkun Ou",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/changkun/changkun-blog-desktop/issues"
+  },
+  "homepage": "https://github.com/changkun/changkun-blog-desktop#readme",
+  "devDependencies": {
+    "electron": "^1.3.4",
+    "electron-builder": "^6.4.0"
+  }
+}
