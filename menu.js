@@ -12,7 +12,7 @@ function clickMenuItem(url) {
 let menu = [
     {
         label: (() => {
-            if(process.platfrom == 'darwin') return '欧长坤的博客';
+            if(process.platform == 'darwin') return '欧长坤的博客';
             else return '选项';
         })(),
         submenu: [
@@ -27,7 +27,7 @@ let menu = [
             {
                 type: 'separator',
                 visible: (()=>{
-                    if (process.platfrom == 'darwin') return true;
+                    if (process.platform == 'darwin') return true;
                     else return false;
                 })()
             },

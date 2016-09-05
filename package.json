@@ -6,7 +6,10 @@
   "main": "main.js",
   "scripts": {
     "start": "electron main.js",
-    "build": "build --mac",
+    "build": "build -wml",
+    "build-mac": "build --mac",
+    "build-win": "build --win",
+    "build-linux": "build --linux",
     "clean": "rm -rf dist"
   },
   "build": {
@@ -32,6 +35,12 @@
           "type": "file"
         }
       ]
+    },
+    "win": { "target": "nsis" },
+    "linux": {
+      "productName": "欧长坤的博客",
+      "synopsis": "changkun",
+      "target": "deb"
     }
   },
   "directories": { "buildResources": "assets" },
@@ -42,7 +51,12 @@
   "keywords": [
     "Changkun"
   ],
-  "author": "Changkun Ou",
+  "author": {
+    "maintainer": "Changkun Ou",
+    "name": "changkun.us",
+    "email": "hi@changkun.us",
+    "url": "changkun.us"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/changkun/changkun-blog-desktop/issues"
