@@ -38,4 +38,5 @@ jspm_packages
 
 
 .vscode/
+release/
 dist/
