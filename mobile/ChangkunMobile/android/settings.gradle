@@ -1,0 +1,3 @@
+rootProject.name = 'ChangkunMobile'
+
+include ':app'
