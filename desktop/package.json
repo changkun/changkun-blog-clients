@@ -1,11 +1,10 @@
 {
   "name": "changkun-blog-desktop",
-  "productName": "欧长坤的博客",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Changkun's Blog Desktop Client",
-  "main": "main.js",
+  "main": "src/app.js",
   "scripts": {
-    "start": "electron main.js",
+    "start": "NODE_ENV=debug electron src/app.js",
     "build": "build -wml",
     "build-mac": "build --mac",
     "build-win": "build --win",
@@ -14,14 +13,16 @@
   },
   "build": {
     "appId": "us.changkun",
-    "category": "public.app-category.education",
-    "copyright": "Copyright © 2016 changkun.us",
-    "extend-info": "assets/macos.plist",
+    "productName": "欧长坤的博客",
+    "copyright": "Copyright © 2016-2017 changkun.us",
+    "directories": {
+      "buildResources": "assets"
+    },
+    "mac": {
+      "target": ["dmg"],
+      "category": "public.app-category.entertainment"
+    },
     "dmg": {
-      "title": "changkun-desktop",
-      "icon": "assets/icon.icns",
-      "icon-size": 100,
-      "background": "assets/background.png",
       "contents": [
         {
           "x": 415,
@@ -36,34 +37,43 @@
         }
       ]
     },
-    "win": { "target": "nsis" },
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
     "linux": {
-      "productName": "欧长坤的博客",
-      "synopsis": "changkun",
-      "target": "deb"
+      "target": [
+        "deb"
+      ]
     }
   },
-  "directories": { "buildResources": "assets" },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/changkun/changkun-blog-desktop.git"
   },
   "keywords": [
-    "Changkun"
+    "Changkun",
+    "Blog",
+    "DesktopClient"
   ],
   "author": {
     "maintainer": "Changkun Ou",
     "name": "changkun.us",
     "email": "hi@changkun.us",
-    "url": "changkun.us"
+    "url": "https://changkun.us"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/changkun/changkun-blog-desktop/issues"
+    "url": "https://github.com/changkun/changkun-blog-clients/issues"
   },
-  "homepage": "https://github.com/changkun/changkun-blog-desktop#readme",
+  "homepage": "https://github.com/changkun/changkun-blog-clients/",
   "devDependencies": {
-    "electron": "^1.3.4",
-    "electron-builder": "^6.4.0"
+    "electron": "^1.6.2",
+    "electron-builder": "^15.4.2",
+    "eslint": "^3.17.1",
+    "eslint-config-standard": "^7.0.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^2.1.1"
   }
 }
