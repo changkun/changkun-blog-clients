@@ -61,6 +61,25 @@ let menu = [
       }
     ]
   }, {
+    label: common.menu.edit,
+    submenu: [
+      {
+        label: common.menu.undo,
+        role: 'undo'
+      }, {
+        label: common.menu.redo,
+        role: 'redo'
+      }, {
+        type: 'separator'
+      }, {
+        label: common.menu.copy,
+        role: 'copy'
+      }, {
+        label: common.menu.paste,
+        role: 'paste'
+      }
+    ]
+  }, {
     label: common.menu.view,
     submenu: [
       {
