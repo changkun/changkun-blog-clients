@@ -2,14 +2,13 @@
 
 const electron = require('electron')
 const app = electron.app
-const shell = electron.shell
 const Menu = electron.Menu
 
 const common = require('../utils/common')
 const lib = require('../utils/lib')
 const updater = require('./updater')
 
-function clickMenuItem (url) {
+function _clickMenuItem (url) {
   return (item, focusedWindow) => {
     // this check is important, otherwise it will cause an
     // error such as when the focused window is about pannel
@@ -87,23 +86,23 @@ let menu = [
     submenu: [
       {
         label: common.menu.home,
-        click: clickMenuItem(common.url.home),
+        click: _clickMenuItem(common.url.home),
         accelerator: 'CmdOrCtrl+H'
       }, {
         type: 'separator'
       }, {
         label: common.menu.archives,
-        click: clickMenuItem(common.url.archives),
+        click: _clickMenuItem(common.url.archives),
         accelerator: 'CmdOrCtrl+A'
       }, {
         label: common.menu.topics,
-        click: clickMenuItem(common.url.topics),
+        click: _clickMenuItem(common.url.topics),
         accelerator: 'CmdOrCtrl+T'
       }, {
         type: 'separator'
       }, {
         label: common.menu.tags,
-        click: clickMenuItem(common.url.tags),
+        click: _clickMenuItem(common.url.tags),
         accelerator: 'CmdOrCtrl+G'
       }
     ]
@@ -123,17 +122,17 @@ let menu = [
         }
       }, {
         label: common.menu.aboutMe,
-        click: clickMenuItem(common.url.about),
+        click: _clickMenuItem(common.url.about),
         accelerator: 'CmdOrCtrl+B'
       }, {
         type: 'separator'
       }, {
         label: common.menu.thanks,
-        click: clickMenuItem(common.url.thanks)
+        click: _clickMenuItem(common.url.thanks)
       }, {
         label: common.menu.contact,
         click: () => {
-          shell.openExternal(common.url.mail)
+          lib.externalOpenURL(common.url.mail)
         },
         accelerator: 'CmdOrCtrl+M'
       }

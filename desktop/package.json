@@ -21,25 +21,18 @@
       }
     ],
     "appId": "us.changkun",
-    "productName": "欧长坤的博客",
+    "productName": "Changkun Blog",
     "copyright": "Copyright © 2016-2017 changkun.us",
     "protocols": [
       {
         "name": "changkun://",
-        "schemes": [
-          "irc",
-          "ircs"
-        ]
+        "schemes": [ "irc", "ircs" ]
       }
     ],
-    "directories": {
-      "buildResources": "assets"
-    },
+    "directories": {"buildResources": "assets"},
     "mac": {
       "category": "public.app-category.entertainment",
-      "target": [
-        "dmg"
-      ],
+      "target": [ "dmg" ],
       "icon": "assets/icon.icns"
     },
     "dmg": {
@@ -57,16 +50,8 @@
         }
       ]
     },
-    "win": {
-      "target": [
-        "nsis"
-      ]
-    },
-    "linux": {
-      "target": [
-        "deb"
-      ]
-    }
+    "win": {"target": ["nsis"]},
+    "linux": {"target": ["deb"]}
   },
   "repository": {
     "type": "git",

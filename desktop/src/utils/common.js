@@ -9,7 +9,8 @@ Common.url = {
   tags: 'https://changkun.us/tags',
   about: 'https://changkun.us/about',
   thanks: 'https://changkun.us/thanks',
-  mail: 'mailto:hi[at]changkun.us'
+  mail: 'mailto:hi[at]changkun.us',
+  release: 'https://github.com/changkun/changkun-blog-clients/releases'
 }
 
 Common.menu = {
