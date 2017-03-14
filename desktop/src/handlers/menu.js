@@ -1,11 +1,13 @@
 'use strict'
 
 const electron = require('electron')
+const app = electron.app
 const shell = electron.shell
 const Menu = electron.Menu
 
 const common = require('../utils/common')
 const lib = require('../utils/lib')
+const updater = require('./updater')
 
 function clickMenuItem (url) {
   return (item, focusedWindow) => {
@@ -38,8 +40,11 @@ let menu = [
           else return false
         })()
       }, {
-        label: common.menu.version,
+        label: common.menu.version + `${app.getVersion()}`,
         enabled: false
+      }, {
+        label: common.menu.update,
+        click: updater.checkForUpdates
       }, {
         type: 'separator'
       }, {
@@ -55,9 +60,7 @@ let menu = [
       }, {
         label: common.menu.quit,
         accelerator: 'CmdOrCtrl+Q',
-        click: () => {
-          lib.exit(true)
-        }
+        click: () => lib.exit(true)
       }
     ]
   }, {

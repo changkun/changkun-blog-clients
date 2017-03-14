@@ -1,8 +1,5 @@
 'use strict'
 
-const electron = require('electron')
-const app = electron.app
-
 class Common {}
 
 Common.url = {
@@ -19,9 +16,10 @@ Common.menu = {
   name: '欧长坤的博客',
   option: '选项',
   about: '关于',
-  version: `当前版本: ${app.getVersion()}`,
+  version: '当前版本: ',
+  update: '检查更新',
   close: '关闭窗口',
-  quit: `退出 ${app.getName()}`,
+  quit: '退出 欧长坤的博客',
   edit: '编辑',
   undo: '撤销',
   redo: '重做',

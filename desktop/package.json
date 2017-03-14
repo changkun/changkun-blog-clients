@@ -9,10 +9,17 @@
     "build-mac": "build --mac",
     "build-win": "build --win",
     "build-linux": "build --linux",
-    "build-release": "build -wml --draft",
+    "build-release": "build -wml -p always",
     "clean": "rm -rf dist"
   },
   "build": {
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "changkun",
+        "repo": "changkun-blog-clients"
+      }
+    ],
     "appId": "us.changkun",
     "productName": "欧长坤的博客",
     "copyright": "Copyright © 2016-2017 changkun.us",
@@ -87,6 +94,11 @@
     "eslint": "^3.17.1",
     "eslint-config-standard": "^7.0.1",
     "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-standard": "^2.1.1"
+    "eslint-plugin-standard": "^2.1.1",
+    "mocha": "^3.2.0",
+    "spectron": "^3.6.0"
+  },
+  "dependencies": {
+    "electron-updater": "^1.9.0"
   }
 }

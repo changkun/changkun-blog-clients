@@ -484,13 +484,13 @@ debug@0.7.4:
   version "0.7.4"
   resolved "https://registry.yarnpkg.com/debug/-/debug-0.7.4.tgz#06e1ea8082c2cb14e39806e22e2f6f757f92af39"
 
-debug@2.2.0, debug@^2.1.1, debug@^2.1.3, debug@^2.2.0:
+debug@2.2.0, debug@^2.1.1, debug@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.2.0.tgz#f87057e995b1a1f6ae6a4960664137bc56f039da"
   dependencies:
     ms "0.7.1"
 
-debug@2.6.2, debug@^2.6.0, debug@^2.6.1:
+debug@2.6.2, debug@^2.1.3, debug@^2.6.0, debug@^2.6.1:
   version "2.6.2"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.2.tgz#dfa96a861ee9b8c2f29349b3bcc41aa599a71e0f"
   dependencies:
@@ -679,6 +679,17 @@ electron-publish@15.4.0:
     fs-extra-p "^4.0.2"
     mime "^1.3.4"
     progress-ex "^2.0.0"
+
+electron-updater@^1.9.0:
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/electron-updater/-/electron-updater-1.9.0.tgz#5afa38fec21b955ce60bbabcc48d202020171af8"
+  dependencies:
+    bluebird-lst "^1.0.1"
+    electron-builder-http "15.3.0"
+    fs-extra-p "^4.0.2"
+    js-yaml "^3.8.2"
+    semver "^5.3.0"
+    source-map-support "^0.4.11"
 
 electron@^1.6.2:
   version "1.6.3"
