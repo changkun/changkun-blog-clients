@@ -9,18 +9,31 @@
     "build-mac": "build --mac",
     "build-win": "build --win",
     "build-linux": "build --linux",
+    "build-release": "build -wml --draft",
     "clean": "rm -rf dist"
   },
   "build": {
     "appId": "us.changkun",
     "productName": "欧长坤的博客",
     "copyright": "Copyright © 2016-2017 changkun.us",
+    "protocols": [
+      {
+        "name": "changkun://",
+        "schemes": [
+          "irc",
+          "ircs"
+        ]
+      }
+    ],
     "directories": {
       "buildResources": "assets"
     },
     "mac": {
-      "target": ["dmg"],
-      "category": "public.app-category.entertainment"
+      "category": "public.app-category.entertainment",
+      "target": [
+        "dmg"
+      ],
+      "icon": "assets/icon.icns"
     },
     "dmg": {
       "contents": [

@@ -13,6 +13,7 @@ class lib {
         })
       })
     }
+    app.quit()
     app.exit(0)
   }
 }
