@@ -1,6 +1,6 @@
 {
   "name": "changkun-blog-desktop",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "description": "Changkun's Blog Desktop Client",
   "main": "src/app.js",
   "scripts": {
@@ -32,7 +32,7 @@
     "directories": {"buildResources": "assets"},
     "mac": {
       "category": "public.app-category.entertainment",
-      "target": [ "dmg" ],
+      "target": [ "dmg", "zip" ],
       "icon": "assets/icon.icns"
     },
     "dmg": {

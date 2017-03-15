@@ -1,8 +1,8 @@
 const electron = require('electron')
 const { autoUpdater } = require('electron-updater')
 
-const lib = require('../utils/lib')
-const common = require('../utils/common')
+// const lib = require('../utils/lib')
+// const common = require('../utils/common')
 
 const dialog = electron.dialog
 
@@ -40,10 +40,10 @@ autoUpdater.on('update-downloaded', () => {
 })
 
 function checkForUpdates (menuItem, focusedWindow, event) {
-  // updater = menuItem
-  // updater.enabled = false
-  // autoUpdater.checkForUpdates()
-  lib.externalOpenURL(common.url.release)
+  updater = menuItem
+  updater.enabled = false
+  autoUpdater.checkForUpdates()
+  // lib.externalOpenURL(common.url.release)
 }
 
 module.exports.checkForUpdates = checkForUpdates
