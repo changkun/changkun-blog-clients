@@ -1,6 +1,6 @@
 <img src="logo.png" alt="logo" height="120" align="right" />
 # Changkun's Blog Clients
-*[Changkun's Blog](https://changkun.us/) Desktop&Mobile Clients, powered by [Electron](http://electron.atom.io) & [React Native](http://facebook.github.io/react-native/).*
+[*Changkun's Blog*](https://changkun.us/) *Desktop&Mobile Clients, powered by* [*Electron*](http://electron.atom.io) & [*React Native*](http://facebook.github.io/react-native/).
 
 For quickly build desktop and mobile versions, just:
 
