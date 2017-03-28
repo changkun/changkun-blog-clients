@@ -1,23 +1,26 @@
-// export let CKBLOG_API   = 'https://changkun.us/api/';
-
-class API {
+export default class API {
+	constructor() {
+		this.CKBLOG_POSTS = this.CKBLOG_API + 'posts.json';
+	}
+	static CKBLOG_API() {
+		return 'https://changkun.us/api/'
+	}
+	static CKBLOG_TAGS() {
+		return API.CKBLOG_API() + 'tags.json';
+	}
+	static CKBLOG_SITE() {
+		return API.CKBLOG_API() + 'site.json';
+	}
+	static CKBLOG_API_BY_PATH(path) {
+		return API.CKBLOG_API() + path;
+	}
+	static CKBLOG_POSTS_BY_PAGE(page) {
+		return API.CKBLOG_API() + 'posts/' + page + '.json';
+	}
+	static CKBLOG_POSTS_BY_TAG(tag) {
+		return API.CKBLOG_API() + 'tags/' + tag + '.json';
+	}
+	static CKBLOG_POSTS_BY_SLUG = (slug) => {
+		return API.CKBLOG_API() + 'articles/' + slug + '.json';
+	}
 }
-
-API.CKBLOG_API = '../../assets/api/'
-API.CKBLOG_SITE  = CKBLOG_API + 'site.json';
-API.CKBLOG_POSTS = CKBLOG_API + 'posts.json';
-API.CKBLOG_TAGS  = CKBLOG_API + 'tags.json';
-API.CKBLOG_API_BY_PATH = (path) => {
-	return CKBLOG_API + path;
-}
-API.CKBLOG_POSTS_BY_PAGE = (page) => {
-	return CKBLOG_API + 'posts/' + page + '.json'
-}
-API.CKBLOG_POSTS_BY_TAG = (tag) => {
-	return CKBLOG_API + 'tags/' + tag + '.json'
-}
-API.CKBLOG_POSTS_BY_SLUG = (slug) => {
-	return CKBLOG_API + 'articles/' + slug + '.json'
-}
-
-module.exports = API

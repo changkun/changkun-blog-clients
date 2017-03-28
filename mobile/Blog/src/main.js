@@ -16,7 +16,6 @@ import About from './components/about'
 import Dimensions from 'Dimensions';
 
 let {width, height, scale} = Dimensions.get('window');
-let posts = require('../assets/api/posts.json')
 
 export default class Main extends Component {
 	constructor() {

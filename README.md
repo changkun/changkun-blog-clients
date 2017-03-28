@@ -80,14 +80,51 @@ react-native run-android
 
 ### Preview
 
-<div style="display: flex; justify-content: center">
-	<div style="border: solid; border-width: 1px;">
-	<img src="assets/mobile1.png" height=480/>
+<div style="text-align: center;">
+	<div style="display: inline; ">
+	<img src="assets/mobile1.png" style="border: solid; border-width: 1px;" height=480/>
 	</div>
-	<div style="border: solid; border-width: 1px;">
-	<img src="assets/mobile2.png" height="480"/>
+	<div style="display: inline;">
+	<img src="assets/mobile2.png" style="border: solid; border-width: 1px;" height="480"/>
 	</div>
 </div>
+
+
+### TODO
+
+#### Server Side API Design
+
+> At present, mobile version requires the API generate from `hexo-generator-restful`, which gives bad API design, we need reimplement it.
+
+- [ ] posts.json, `posts.data` contains post object array, the `post` object contains: 
+	+ title: article title
+	+ excerpt: article excerpt, if exists
+	+ cover: article image cover, if exists
+	+ date: article publish date, format: YYYY-MM-DD
+	+ tags: tag array, maximum to 3
+	+ path: path to access article itself
+- [x] tags.json, contains tag objects array, tag object contains:
+	+ name: tag name
+	+ path: article with the tag
+	+ count: article statistic
+	+ api/tags/<tag>.json
+		+ `tag.postlist` contains `post` objects as an array
+- [ ] about.json
+
+#### Client Side Design 
+
+- [ ] Pull-down & pull-up refresh for ListView component
+- [ ] Markdown Post page component
+- [ ] Post cell navigator
+- [ ] Local data persistent --> local cache
+- [x] Tags Cloud page
+- [ ] Tags Cloud page navigator
+- [ ] Local data fuzzy search
+- [ ] About page component
+- [ ] Comments enable
+- [ ] Dark Mode
+- [ ] Internationalization
+- [ ] Android Support
 
 ## License
 
