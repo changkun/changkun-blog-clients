@@ -1,15 +1,10 @@
-const electron = require('electron')
+const {dialog} = require('electron')
 const { autoUpdater } = require('electron-updater')
-
-// const lib = require('../utils/lib')
-// const common = require('../utils/common')
-
-const dialog = electron.dialog
 
 let updater
 autoUpdater.autoDownload = false
 autoUpdater.on('error', (event, error) => {
-  dialog.showErrorBox('错误', error)
+  dialog.showErrorBox('出现错误: ', error == null ? "unknown" : (error.stack || error).toString())
 })
 autoUpdater.on('checking-for-update', () => {
 })
@@ -29,12 +24,12 @@ autoUpdater.on('update-available', () => {
   })
 })
 autoUpdater.on('update-not-available', () => {
-  dialog.showMessageBox({title: '安装更新', message: '当前版本已经是最新版.'})
+   
   updater.enabled = true
   updater = null
 })
 autoUpdater.on('update-downloaded', () => {
-  dialog.showMessageBox({title: '安装更新', message: '即将安装更新，应用将自动退出...'}, () => {
+  dialog.showMessageBox({title: '安装更新', message: '应用将在退出后完成更新...'}, () => {
     autoUpdater.quitAndInstall()
   })
 })
@@ -43,7 +38,6 @@ function checkForUpdates (menuItem, focusedWindow, event) {
   updater = menuItem
   updater.enabled = false
   autoUpdater.checkForUpdates()
-  // lib.externalOpenURL(common.url.release)
 }
 
 module.exports.checkForUpdates = checkForUpdates

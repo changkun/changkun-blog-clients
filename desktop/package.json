@@ -1,6 +1,6 @@
 {
   "name": "changkun-blog-desktop",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Changkun's Blog Desktop Client",
   "main": "src/app.js",
   "scripts": {
@@ -21,18 +21,26 @@
       }
     ],
     "appId": "us.changkun",
-    "productName": "Changkun Blog",
+    "productName": "欧长坤的博客",
     "copyright": "Copyright © 2016-2017 changkun.us",
     "protocols": [
       {
         "name": "changkun://",
-        "schemes": [ "irc", "ircs" ]
+        "schemes": [
+          "irc",
+          "ircs"
+        ]
       }
     ],
-    "directories": {"buildResources": "assets"},
+    "directories": {
+      "buildResources": "assets"
+    },
     "mac": {
       "category": "public.app-category.entertainment",
-      "target": [ "dmg", "zip" ],
+      "target": [
+        "dmg",
+        "zip"
+      ],
       "icon": "assets/icon.icns"
     },
     "dmg": {
@@ -50,8 +58,16 @@
         }
       ]
     },
-    "win": {"target": ["nsis"]},
-    "linux": {"target": ["deb"]}
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "linux": {
+      "target": [
+        "deb"
+      ]
+    }
   },
   "repository": {
     "type": "git",
@@ -75,7 +91,7 @@
   "homepage": "https://github.com/changkun/changkun-blog-clients/",
   "devDependencies": {
     "electron": "^1.6.2",
-    "electron-builder": "^15.4.2",
+    "electron-builder": "^16.4.2",
     "eslint": "^3.17.1",
     "eslint-config-standard": "^7.0.1",
     "eslint-plugin-promise": "^3.5.0",
