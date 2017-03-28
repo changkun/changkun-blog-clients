@@ -10,22 +10,14 @@ import {
   StyleSheet,
   View
 } from 'react-native';
-import Home from './src/components/home'
+import Main from './src/main'
 
 export default class Blog extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Home />
-      </View>
+      <Main />
     );
   }
 }
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#F5F5F5'
-  }
-})
 
 AppRegistry.registerComponent('Blog', () => Blog);

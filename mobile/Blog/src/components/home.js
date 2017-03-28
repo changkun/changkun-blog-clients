@@ -7,46 +7,82 @@ import {
 	Image,
 	TouchableOpacity,
 	AlertIOS,
-	TabBarIOS
+	TabBarIOS,
+	NavigatorIOS
 } from 'react-native';
 import Dimensions from 'Dimensions';
-
 let {width, height, scale} = Dimensions.get('window');
-let posts = require('../../assets/api/posts.json')
 
 export default class Home extends Component {
 	constructor() {
 		super();
-		console.log(posts)
-		const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 		this.state = {
-			dataSource: ds.cloneWithRows(posts.data),
+			dataSource: new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
 		};
+	}
+	componentDidMount() {
+		this.loadPostFromNet();
+	}
+	loadPostFromNet() {
+		return fetch('https://changkun.us/api/posts.json')
+			.then((response) => {
+				return response.json()
+			})
+			.then((responseJson) => {
+				console.log(responseJson)
+				this.setState({
+					dataSource: this.state.dataSource.cloneWithRows(responseJson.data)
+				})
+				return responseJson.data
+			})
+			.catch((error) => {
+				console.log(error)
+			})
 	}
 	render() {
 		return (
-			<View>
-				<ListView
-					dataSource = {this.state.dataSource}
-					renderRow = {this.renderRow}
-				/>
-				<TabBarIOS>
-				</TabBarIOS>
-			</View>
+			<ListView
+				dataSource = {this.state.dataSource}
+				renderRow = {this.renderRow}
+				backgroundColor = '#F5F5F5'
+			/>
 		)
 	}
 	renderRow(rowData, sectionID, rowID, highlightRow) {
-		console.log(rowData.tags[0].name)
+		// 解析简介，过滤 tag 和图片
+		let excerpt = rowData.excerpt ? rowData.excerpt
+									.replace(/\<(?!img|br).*?\>/g, "")
+									.replace(/\r?\n|\r/g, '')
+									.replace(/<img(.*)>/g, ' [图片] ')
+									.substring(0, 100) : ''
+		
+		// 解析正文，提取文中图片
+		let rex = /<img[^>]+src="?([^"\s]+)"(.*)>/g;
+		let results = rex.exec(rowData.content)
+		let imgURL = null
+		if (results !== null)
+			imgURL = results[1]
+		
+		// 解析 tag list
+		tag_list = '/ '
+		rowData.tags.forEach((tag) => {
+			tag_list += tag.name + ' / '
+		})
+
 		return (
 			<TouchableOpacity onPress={() => {AlertIOS.alert('点击了'+rowData.title)}}>
 			<View style={styles.cell}>
-				<Image source={require('../../assets/logo.png')} style={styles.cover}/>
 				<View style={styles.contents}>
-					<Text >{rowData.title}</Text>
-					<Text style={{color: 'gray', marginTop: 10}}>{rowData.date.split('T')[0]}</Text>
-					<View style={styles.tag}>
-						<Text style={{color: 'lightsteelblue'}}>{rowData.tags[0].name}</Text>
-					</View>
+					<Text style={{fontSize: 15, fontWeight: 'bold', color: '#FF6600'}}>{rowData.title}</Text>
+					{
+						excerpt.length > 0 && 
+						<Text style={{marginTop: 10, marginBottom: 10, color: '#666666'}} numberOfLines={3}>{excerpt}</Text>
+					}
+				</View>
+				{imgURL && <Image source={{uri: 'https://changkun.us'+imgURL}} style={styles.cover}/>}
+				<View style={styles.tag}>
+					<Text style={{color: 'gray'}}>{rowData.date.split('T')[0]}</Text>
+					<Text style={{color: 'cornflowerblue'}}>{tag_list}</Text>
 				</View>
 			</View>
 			</TouchableOpacity>
@@ -57,23 +93,32 @@ export default class Home extends Component {
 const styles = StyleSheet.create({
 	cell: {
 		flex: 1,
-		flexDirection: 'row',
+		flexDirection: 'column',
 		justifyContent: 'flex-start',
 		marginTop: 10,
-		backgroundColor: 'white',
-		padding: 10
+		backgroundColor: '#FFFFFE',
+		paddingTop: 10,
+		paddingBottom: 10,
+		borderStyle: 'solid',
+		borderTopWidth: 1,
+		borderBottomWidth: 1,
+		borderColor: '#EEEEEE',
 	},
 	cover: {
-		width: width*0.2,
-		height: width*0.2 
+		width: width,
+		height: 120
 	},
 	contents: {
-		marginLeft: 10,
-		width: width*0.7,
-		justifyContent: 'center'
+		alignSelf: 'center',
+		width: width*0.9,
+		justifyContent: 'center',
 	},
 	tag: {
-		borderRadius: 2, 
-		// backgroundColor: 'lightgoldenrodyellow',
+		paddingTop: 10,
+		paddingLeft: (width*0.1)/2,
+		paddingRight: (width*0.1)/2,
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'space-between',
 	}
 })
