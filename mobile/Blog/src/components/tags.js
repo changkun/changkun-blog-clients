@@ -26,10 +26,9 @@ export default class Tags extends Component {
 			let rows = []
 			for(let i=0; i<tags.length; i++)
 				rows.push(
-					<TouchableOpacity focusedOpacity={10} onPress={() => this._tagOnPress(tags[i].name)}>
+					<TouchableOpacity key={i} focusedOpacity={10} onPress={() => this._tagOnPress(tags[i].name)}>
 						<Text 
-							key={i+1}
-							style={[styles.tag, {fontSize: parseInt(tags[i].count)*3}]}
+							style={[styles.tag, {fontSize: Math.log(parseInt(tags[i].count))*8}]}
 						>
 							{tags[i].name}
 						</Text>

@@ -96,7 +96,7 @@ react-native run-android
 
 > At present, mobile version requires the API generate from `hexo-generator-restful`, which gives bad API design, we need reimplement it.
 
-- [ ] posts.json, `posts.data` contains post object array, the `post` object contains: 
+- [x] posts.json, `posts.data` contains post object array, the `post` object contains: 
 	+ title: article title
 	+ excerpt: article excerpt, if exists
 	+ cover: article image cover, if exists
@@ -109,7 +109,8 @@ react-native run-android
 	+ count: article statistic
 	+ api/tags/<tag>.json
 		+ `tag.postlist` contains `post` objects as an array
-- [ ] about.json
+- [x] about.json
+	+ this improves `hexo-generator-restful`
 
 #### Client Side Design 
 
@@ -120,7 +121,7 @@ react-native run-android
 - [x] Tags Cloud page
 - [ ] Tags Cloud page navigator
 - [ ] Local data fuzzy search
-- [ ] About page component
+- [x] About page component
 - [ ] Comments enable
 - [ ] Dark Mode
 - [ ] Internationalization

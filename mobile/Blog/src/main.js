@@ -15,7 +15,30 @@ import About from './components/about'
 
 import Dimensions from 'Dimensions';
 
-let {width, height, scale} = Dimensions.get('window');
+const {width, height, scale} = Dimensions.get('window');
+
+const tabBarTitle = {
+	home: {
+		tab: '主页',
+		nav: '欧长坤的博客',
+		icon: '../assets/tabbar/home.png'
+	},
+	tags: {
+		tab: '标签',
+		nav: '标签云',
+		icon: '../assets/tabbar/tags.png'
+	},
+	search: {
+		tab: '搜索',
+		nav: '内容搜索',
+		icon: '../assets/tabbar/search.png'
+	},
+	about: {
+		tab: '关于',
+		nav: '关于我',
+		icon: '../assets/tabbar/about.png'
+	}
+}
 
 export default class Main extends Component {
 	constructor() {
@@ -30,7 +53,7 @@ export default class Main extends Component {
 				tintColor='#FF6600'
 			>
 				<TabBarIOS.Item 
-					title='主页'
+					title={tabBarTitle.home.tab}
 					icon={require('../assets/tabbar/home.png')}
 					selected={this.state.selectedTabBarItem === 'home'}
 					onPress={()=>{this.setState({selectedTabBarItem: 'home'})}}
@@ -39,13 +62,13 @@ export default class Main extends Component {
 					<NavigatorIOS
 						initialRoute={{
 							component: Home,
-							title: '欧长坤的博客',
+							title: tabBarTitle.home.nav,
 						}}
 						style={styles.container}
 					/>
 				</TabBarIOS.Item>
 				<TabBarIOS.Item 
-					title='标签'
+					title={tabBarTitle.tags.tab}
 					icon={require('../assets/tabbar/tags.png')}
 					selected={this.state.selectedTabBarItem === 'tags'}
 					onPress={()=>{this.setState({selectedTabBarItem: 'tags'})}}
@@ -54,13 +77,13 @@ export default class Main extends Component {
 					<NavigatorIOS
 						initialRoute={{
 							component: Tags,
-							title: '标签',
+							title: tabBarTitle.tags.nav,
 						}}
 						style={styles.container}
 					/>
 				</TabBarIOS.Item>
 				<TabBarIOS.Item 
-					title='搜索'
+					title={tabBarTitle.search.tab}
 					icon={require('../assets/tabbar/search.png')}
 					selected={this.state.selectedTabBarItem === 'search'}
 					onPress={()=>{this.setState({selectedTabBarItem: 'search'})}}
@@ -69,13 +92,13 @@ export default class Main extends Component {
 					<NavigatorIOS
 						initialRoute={{
 							component: Search,
-							title: '搜索',
+							title: tabBarTitle.search.nav,
 						}}
 						style={styles.container}
 					/>
 				</TabBarIOS.Item>
 				<TabBarIOS.Item 
-					title='关于'
+					title={tabBarTitle.about.tab}
 					icon={require('../assets/tabbar/about.png')}
 					selected={this.state.selectedTabBarItem === 'about'}
 					onPress={()=>{this.setState({selectedTabBarItem: 'about'})}}
@@ -84,7 +107,7 @@ export default class Main extends Component {
 					<NavigatorIOS
 						initialRoute={{
 							component: About,
-							title: '关于',
+							title: tabBarTitle.about.nav,
 						}}
 						style={styles.container}
 					/>

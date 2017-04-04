@@ -100,20 +100,6 @@ export default class Home extends Component {
 			return <LoadingIndicator loading = {rowData.loading} />
 
 		// 否则为常规 cell
-
-		// 解析简介，过滤 tag 和图片
-		let excerpt = rowData.excerpt ? rowData.excerpt
-									.replace(/\<(?!img|br).*?\>/g, "")
-									.replace(/\r?\n|\r/g, '')
-									.replace(/<img(.*)>/g, ' [图片] ')
-									.substring(0, 100) : ''
-		
-		// 解析正文，提取文中图片
-		let rex = /<img[^>]+src="?([^"\s]+)"(.*)>/g;
-		let results = rex.exec(rowData.content);
-		let imgURL = null;
-		if (results !== null)
-			imgURL = results[1];
 		
 		// 解析 tag list
 		tag_list = '/ ';
@@ -127,11 +113,11 @@ export default class Home extends Component {
 				<View style={styles.contents}>
 					<Text style={{fontSize: 15, fontWeight: 'bold', color: '#FF6600'}}>{rowData.title}</Text>
 					{
-						excerpt.length > 0 && 
-						<Text style={{marginTop: 10, marginBottom: 10, color: '#666666'}} numberOfLines={3}>{excerpt}</Text>
+						rowData.excerpt && 
+						<Text style={{marginTop: 10, marginBottom: 10, color: '#666666'}} numberOfLines={3}>{rowData.excerpt}</Text>
 					}
 				</View>
-				{imgURL && <Image source={{uri: 'https://changkun.us'+imgURL}} style={styles.cover}/>}
+				{rowData.cover && <Image source={{uri: 'https://changkun.us'+rowData.cover}} style={styles.cover}/>}
 				<View style={styles.tag}>
 					<Text style={{color: 'gray'}}>{'发布于 '+rowData.date.split('T')[0]}</Text>
 					<Text style={{color: 'cornflowerblue'}}>{tag_list}</Text>

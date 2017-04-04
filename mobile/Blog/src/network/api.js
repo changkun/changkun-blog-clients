@@ -8,6 +8,9 @@ export default class API {
 	static CKBLOG_TAGS() {
 		return API.CKBLOG_API() + 'tags.json';
 	}
+	static CKBLOG_ABOUT() {
+		return API.CKBLOG_API() + '/pages/about.json';
+	}
 	static CKBLOG_SITE() {
 		return API.CKBLOG_API() + 'site.json';
 	}
